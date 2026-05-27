@@ -1,49 +1,58 @@
-.container{
-    display: grid;
-    grid-template-columns: 3fr 3fr 3fr;
-    grid-template-rows: 2fr 1fr 4fr;
-    
-    gap:1px;
-    justify-items: stretch;
-   
-
+* {
+    box-sizing: border-box;
 }
-.container1{
-    display: flexbox;
-    
 
-}
-.container2{
-    display: grid;
-    grid-template-columns: repeat(2, 200px); /* Crea 2 columnas de 200px cada una */
-    grid-template-rows: repeat(3, 200px);    /* Crea 3 filas de 200px cada una */
-    gap: 20px;                               /* Separación entre imágenes */
-    justify-content: center;                 /* Centra toda la cuadrícula en la pantalla */
+body {
+    font-family: sans-serif;
     padding: 20px;
-    
+    background-color: #fafafa;
+}
 
+.contenedor-principal {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Separación entre el bloque azul y el blanco */
 }
-.container3 {
-    display: flex;         /* Activa el modo Flexbox */
-    justify-content: center; /* Centra las imágenes horizontalmente */
-    flex-wrap: wrap;       /* Si la pantalla es chiquita, se acomodan abajo en vez de amontonarse */
-    gap: 20px;             /* Agrega una separación bonita entre cada imagen */
-    padding: 20px;         /* Espacio opcional arriba y abajo para que no peguen al borde del navegador */
+
+/* --- FILA SUPERIOR (Módulo Azul) --- */
+.fila-superior {
+    background-color: #2b7fff; /* El fondo azul exterior */
+    padding: 15px;
+    display: flex;
+    gap: 0; /* Sin separación entre ellas, se dividen por bordes */
+    flex-wrap: wrap; /* Permite que bajen si no caben en móviles */
 }
-.container4 {
-    display: grid;
-    grid-template-columns: repeat(3, 200px); /* Cambia a 3 columnas */
-    grid-template-rows: repeat(2, 200px);    /* Cambia a 2 filas */
-    gap: 20px;                               /* Espacio entre los cuadros */
-    justify-content: center;                 /* Centra todo el bloque en la pantalla */
+
+.fila-superior .columna {
+    flex: 1; /* Hace que las 3 columnas midan exactamente lo mismo */
+    min-width: 200px; /* Evita que se compriman demasiado en pantallas chicas */
+    border: 1px solid #000;
+    background-color: #2b7fff;
+    color: #000;
     padding: 20px;
-
-
+    text-align: center;
 }
-.item{
-   border: 1px solid black; /* Corregido de 1px a 1px */
-    width: 200px;            /* El ancho fijo que tú quieras */
-    height: 200px;           /* El alto fijo que tú quieras */
-    overflow: hidden;
-   
+
+/* --- FILA INFERIOR (Módulo Blanco) --- */
+.fila-inferior .columna {
+    border: 1px solid #000;
+    background-color: #ffffff;
+    color: #000;
+    padding: 20px;
+    width: 100%; /* Ocupa todo el ancho disponible */
+}
+
+.fila-inferior h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+/* --- RESPONSIVO PARA MÓVILES --- */
+@media (max-width: 600px) {
+    .fila-superior {
+        flex-direction: column; /* En pantallas pequeñas, columna 1, 2 y 3 se apilan verticalmente */
+        gap: 10px; /* Les da espacio si se apilan */
+    }
 }
